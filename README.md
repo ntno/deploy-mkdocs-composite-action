@@ -1,5 +1,5 @@
 # deploy-mkdocs-composite-action
-reusable github action to deploy mkdocs site 
+reusable github action to deploy mkdocs site to S3
 
 ## features
 - configures AWS credentials
@@ -24,6 +24,10 @@ todo
     default: 'dev'
     required: true
     type: string
+  s3-bucket:
+    description: 'S3 Bucket to deploy to.'
+    required: true
+    type: string    
   aws-region:
     description: 'AWS Region.  Ex: us-east-1'
     default: 'us-east-1'
@@ -43,10 +47,10 @@ todo
 expects Makefile in mkdocs project with the following directives:
 ```
 get-mkdocs-archive: env region version
-deploy-mkdocs: env region
+deploy-mkdocs: env region bucket-name
 ```
 ### get-mkdocs-archive
-use this directive to retrieve and unpack mkdocs artifact (ex: download archive from S3 and unzip to ./site/ folder)
+use this directive to retrieve and unpack mkdocs artifact (ex: download archive from S3 and unzip)
 
 ### deploy-mkdocs
-use this directive to deploy mkdocs site (ex: copy ./site/ files to S3)
+use this directive to deploy mkdocs site to S3 bucket

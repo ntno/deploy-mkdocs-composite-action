@@ -1,6 +1,6 @@
 # deploy mkdocs site
 name: Deploy
-description: 'deploys mkdocs site'
+description: 'deploys mkdocs site to S3'
 inputs:
   version:
     description: 'Build version to deploy.  Used to get archive at unique S3 key.  Ex: sha-####, 3.0.0'
@@ -9,6 +9,10 @@ inputs:
   env-name:
     description: 'Environment name.  Ex: dev, prod'
     default: 'dev'
+    required: true
+    type: string
+  s3-bucket:
+    description: 'S3 Bucket to deploy to.'
     required: true
     type: string
   aws-region:
@@ -40,4 +44,4 @@ runs:
     - name: Deploy Site
       shell: bash
       run: |
-        make deploy-mkdocs env=${{ inputs.env-name }} region=${{ inputs.aws-region }}
+        make deploy-mkdocs env=${{ inputs.env-name }} region=${{ inputs.aws-region }} bucket-name=${{ inputs.s3-bucket }}
