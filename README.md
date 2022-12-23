@@ -10,7 +10,23 @@ reusable github action to deploy mkdocs site to S3
 *__note:__* Secrets for composite actions must be configured using an [`environment`](https://docs.github.com/en/actions/using-jobs/using-environments-for-jobs).  The `ci` environment is used in the following example.  It contains the secrets `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
 
 ```
-todo
+jobs:
+  deploy-pr:
+    runs-on: ubuntu-latest
+    environment: ci
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3   
+      - name: Deploy PR
+        id: deploy-mkdocs
+        uses: ntno/deploy-mkdocs-composite-action@v1
+        with:         
+          version: 1.0.3-pr
+          env-name: prod
+          s3-bucket: my-s3-bucket-1.0.3-pr
+          aws-region: us-east-2
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 ```
 
 ## inputs
