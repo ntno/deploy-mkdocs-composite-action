@@ -3,9 +3,8 @@ reusable github action to deploy mkdocs site
 
 ## features
 - configures AWS credentials
-- sets up python and loads pip cache
-- builds mkdocs site
-- archives mkdocs site to AWS (optional)
+- gets mkdocs site archive
+- deploys mkdocs site
 
 ## usage
 *__note:__* Secrets for composite actions must be configured using an [`environment`](https://docs.github.com/en/actions/using-jobs/using-environments-for-jobs).  The `ci` environment is used in the following example.  It contains the secrets `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
