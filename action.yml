@@ -15,6 +15,11 @@ inputs:
     description: 'S3 Bucket to deploy to.'
     required: true
     type: string
+  make-vars:
+    description: 'Variables to pass to make commands.  Ex: `DRY_RUN=1` would result in `make DRY_RUN=1 deploy-mkdocs...` See README.md for details.'
+    default: ""
+    required: false
+    type: string
   aws-region:
     description: 'AWS Region.  Ex: us-east-1'
     default: 'us-east-1'
@@ -40,8 +45,8 @@ runs:
     - name: Get Site Artifact
       shell: bash
       run: |
-        make get-mkdocs-archive env=${{ inputs.env-name }} region=${{ inputs.aws-region }} version=${{ inputs.version }} download-directory="$RUNNER_TEMP/"
+        make ${{ inputs.make-vars }} get-mkdocs-archive env=${{ inputs.env-name }} region=${{ inputs.aws-region }} version=${{ inputs.version }} download-directory="$RUNNER_TEMP/"
     - name: Deploy Site
       shell: bash
       run: |
-        make deploy-mkdocs env=${{ inputs.env-name }} region=${{ inputs.aws-region }} bucket-name=${{ inputs.s3-bucket }}
+        make ${{ inputs.make-vars }} deploy-mkdocs env=${{ inputs.env-name }} region=${{ inputs.aws-region }} bucket-name=${{ inputs.s3-bucket }}
