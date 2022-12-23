@@ -16,7 +16,12 @@ inputs:
     required: true
     type: string
   make-vars:
-    description: 'Variables to pass to make commands.  Ex: `DRY_RUN=1` would result in `make DRY_RUN=1 deploy-mkdocs...` See README.md for details.'
+    description: 'Variables to pass to all make commands.  Ex: `--no-print-directory` would result in `make --no-print-directory get-mkdocs-archive...` See README.md for details.'
+    default: "--no-print-directory QUIET=1"
+    required: false
+    type: string
+  make-vars-for-deploy-target:
+    description: 'Variables to pass to `deploy-mkdocs` make command.  Ex: `QUIET=1` would result in `make QUIET=1 deploy-mkdocs...` See README.md for details.'
     default: ""
     required: false
     type: string
@@ -49,4 +54,4 @@ runs:
     - name: Deploy Site
       shell: bash
       run: |
-        make ${{ inputs.make-vars }} deploy-mkdocs env=${{ inputs.env-name }} region=${{ inputs.aws-region }} bucket-name=${{ inputs.s3-bucket }}
+        make ${{ inputs.make-vars }} ${{ inputs.make-vars-for-deploy-target }} deploy-mkdocs env=${{ inputs.env-name }} region=${{ inputs.aws-region }} bucket-name=${{ inputs.s3-bucket }}
