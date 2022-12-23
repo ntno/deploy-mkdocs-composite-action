@@ -40,7 +40,7 @@ runs:
     - name: Get Site Artifact
       shell: bash
       run: |
-        make get-mkdocs-archive env=${{ inputs.env-name }} region=${{ inputs.aws-region }} version=${{ inputs.version }} 
+        make get-mkdocs-archive env=${{ inputs.env-name }} region=${{ inputs.aws-region }} version=${{ inputs.version }} download-directory="$RUNNER_TEMP/"
     - name: Deploy Site
       shell: bash
       run: |

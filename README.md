@@ -46,7 +46,7 @@ todo
 ## prerequisites
 expects Makefile in mkdocs project with the following directives:
 ```
-get-mkdocs-archive: env region version
+get-mkdocs-archive: env region version download-directory
 deploy-mkdocs: env region bucket-name
 ```
 ### get-mkdocs-archive
