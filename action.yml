@@ -17,7 +17,7 @@ inputs:
     type: string
   make-vars:
     description: 'Variables to pass to all make commands.  Ex: `--no-print-directory` would result in `make --no-print-directory get-mkdocs-archive...` See README.md for details.'
-    default: "--no-print-directory QUIET=1"
+    default: "--no-print-directory"
     required: false
     type: string
   make-vars-for-deploy-target:
