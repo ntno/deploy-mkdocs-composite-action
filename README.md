@@ -51,12 +51,28 @@ jobs:
     type: string                      
   aws-access-key-id:
     description: 'AWS Access Key ID.'
-    required: true
-    type: string
+    required: false
   aws-secret-access-key:
     description: 'AWS Secret Access Key.'
-    required: true
-    type: string
+    required: false
+  role-to-assume:
+    description: >-
+      Use the provided credentials to assume an IAM role and configure the Actions
+      environment with the assumed role credentials rather than with the provided
+      credentials
+    required: false
+  role-duration-seconds:
+    description: "Role duration in seconds (default: 6 hours, 1 hour for OIDC/specified aws-session-token)"
+    required: false
+  role-session-name:
+    description: 'Role session name (default: GitHubActions)'
+    required: false
+  role-external-id:
+    description: 'The external ID of the role to assume'
+    required: false
+  role-skip-session-tagging:
+    description: 'Skip session tagging during role assumption'
+    required: false
 ```
 
 ## prerequisites
