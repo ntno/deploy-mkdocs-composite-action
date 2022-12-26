@@ -71,7 +71,17 @@ jobs:
   s3-bucket:
     description: 'S3 Bucket to deploy to.'
     required: true
-    type: string    
+    type: string
+  make-vars:
+    description: 'Variables to pass to all make commands.  Ex: `--no-print-directory` would result in `make --no-print-directory get-mkdocs-archive...`'
+    default: "--no-print-directory"
+    required: false
+    type: string
+  make-vars-for-deploy-target:
+    description: 'Variables to pass to `deploy-mkdocs` make command.  Ex: `QUIET=1` would result in `make QUIET=1 deploy-mkdocs...`'
+    default: ""
+    required: false
+    type: string
   aws-region:
     description: 'AWS Region.  Ex: us-east-1'
     default: 'us-east-1'

@@ -16,12 +16,12 @@ inputs:
     required: true
     type: string
   make-vars:
-    description: 'Variables to pass to all make commands.  Ex: `--no-print-directory` would result in `make --no-print-directory get-mkdocs-archive...` See README.md for details.'
+    description: 'Variables to pass to all make commands.  Ex: `--no-print-directory` would result in `make --no-print-directory get-mkdocs-archive...`'
     default: "--no-print-directory"
     required: false
     type: string
   make-vars-for-deploy-target:
-    description: 'Variables to pass to `deploy-mkdocs` make command.  Ex: `QUIET=1` would result in `make QUIET=1 deploy-mkdocs...` See README.md for details.'
+    description: 'Variables to pass to `deploy-mkdocs` make command.  Ex: `QUIET=1` would result in `make QUIET=1 deploy-mkdocs...`'
     default: ""
     required: false
     type: string
