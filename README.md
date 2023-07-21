@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v3   
       - name: Deploy PR
         id: deploy-mkdocs
-        uses: ntno/deploy-mkdocs-composite-action@v2
+        uses: ntno/deploy-mkdocs-composite-action@v3
         with:         
           version: 1.0.3-pr
           env-name: prod
@@ -47,7 +47,7 @@ jobs:
         uses: actions/checkout@v3   
       - name: Deploy PR
         id: deploy-mkdocs
-        uses: ntno/deploy-mkdocs-composite-action@v2
+        uses: ntno/deploy-mkdocs-composite-action@v3
         with:         
           version: 1.0.3-pr
           env-name: prod
