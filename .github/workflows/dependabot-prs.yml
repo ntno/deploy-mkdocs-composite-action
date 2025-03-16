@@ -5,7 +5,7 @@ jobs:
     permissions:
       pull-requests: read
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'ntno/build-mkdocs-composite-action'
+    if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == 'ntno/deploy-mkdocs-composite-action'
     steps:
     - name: Fetch Dependabot metadata
       id: dependabot-metadata
